@@ -21,4 +21,6 @@ production:
   encoding: utf8
   database: swarm
   pool: 5
-  socket: /tmp/mysql.sock
+  username: root
+  password: admin
+  socket: /var/run/mysqld/mysqld.sock
