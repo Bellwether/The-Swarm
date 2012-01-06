@@ -1,0 +1,11 @@
+<% content_for :right_header do %>
+  <%= link_to 'Add New Campaign', new_campaign_path, 'data-theme' => 'a', 'data-icon' => 'plus', 'class' => 'ui-btn-right' %>
+<% end %>
+
+<div class="ui-body ui-body-a">
+  <h2>Campaigns</h2>
+  <ul data-role="listview" data-theme="d" data-inset="true">
+
+	<%= render @campaigns ? @campaigns : '' %>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+<% content_for :right_header do %>
+  <%= link_to 'Add New Contact', new_contact_path, 'data-theme' => 'a', 'data-icon' => 'plus', 'class' => 'ui-btn-right' %>
+<% end %>
+
+<div class="ui-body ui-body-a">
+  <h2>Contacts</h2>
+  <ul data-role="listview" data-theme="d" data-inset="true">
+	<%= render @contacts ? @contacts : '' %>	
+  </ul>
+</div>

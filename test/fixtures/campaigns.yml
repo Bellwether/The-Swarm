@@ -1,0 +1,4 @@
+default:
+  account: default
+  name: Test Campaign
+  topic_arn: arn-aws-sns-us-east-1-698519295917-Test-Campaign

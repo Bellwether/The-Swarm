@@ -1,0 +1,13 @@
+<div data-role='header'>
+  <%= yield :left_header %>
+  <h1>The Swarm</h1>
+  <%= yield :right_header %>
+</div>
+<div data-role='navbar' data-iconpos='left'>
+  <ul>
+    <li><%= link_to 'Account', account_path, 'data-theme' => 'a', 'data-icon' => 'home' %></li>
+    <li><%= link_to 'Campaigns', campaigns_path, 'data-theme' => 'a', 'data-icon' => 'grid' %></li>
+    <li><%= link_to 'Contacts', contacts_path, 'data-theme' => 'a', 'data-icon' => 'star' %></li>
+    <li><%= link_to 'User Settings', edit_user_path, 'data-theme' => 'a', 'data-icon' => 'gear' %></li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<div class="ui-body ui-body-a">
+  <h1>New Contact</h1>
+
+  <%= form_for(@contact) do |f| %>
+    <p>
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email %>
+    </p>
+    <p>
+      <%= f.label :phone, 'Phone' %>
+      <%= f.telephone_field :phone %>
+    </p>
+
+    <p><%= f.submit 'Save' %></p>
+  <% end %>
+  <br />
+</div>

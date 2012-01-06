@@ -1,0 +1,5 @@
+default:
+   name: Default User
+   email: default@example.com
+   password_digest: <%= BCrypt::Password.create 'pass' %>
+   account: default

@@ -13,8 +13,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'jquery-rails'
+gem "jquery_mobile-rails"
 
 # Use unicorn as the web server
 # gem 'unicorn'

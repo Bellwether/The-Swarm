@@ -1,0 +1,12 @@
+<div class="ui-body ui-body-a">
+  <h1>New Campaign</h1>
+
+  <%= form_for(@campaign) do |f| %>
+    <p>
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+    </p>
+    <p><%= f.submit 'Save' %></p>
+  <% end %>
+  <br />
+</div>

@@ -11,5 +11,23 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   
+  def login!(user=nil)
+    session[:user_id] = user ? user.id : users(:default).id
+  end
+  
+  def logout!
+    session[:user_id] = nil
+  end
+  
   AWS.stub!
+end
+
+module AWS
+  class SNS
+    class Topic
+      def publish msg, opts = {}
+        return 'aws-1234567890-0987654321' # mock message id response
+      end
+    end
+  end
 end

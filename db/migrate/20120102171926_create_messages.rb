@@ -3,8 +3,9 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.references :user, :null => false   
       t.references :campaign, :null => false
-      t.string :subject, :null => false
+      t.string :subject, :null => false, :limit => 99
       t.text :body
+      t.string :message_arn      
       t.timestamp :created_at
     end
     

@@ -1,0 +1,20 @@
+<% content_for :right_header do %>
+  <%= link_to 'Send Messsage', new_campaign_message_path(@campaign), 'data-theme' => 'a', 'data-icon' => 'plus', 'class' => 'ui-btn-right' %>
+<% end %>
+
+<div class="ui-body ui-body-a">
+  <h1>Campaign: <%= @campaign.name %></h1>
+  <div class="ui-body ui-body-b">
+    <h4>Messages Sent: 0</h4>	
+  </div>
+
+  <h2>Subscribers:</h2>
+  <ul data-role="listview" data-theme="d" data-inset="true">
+	<% if @subscriptions %>
+      <%= render @subscriptions %>
+    <% else %>
+      <li data-role="list-divider">No subscriptions</li>
+    <% end %>
+  </ul>
+  <br />
+</div>

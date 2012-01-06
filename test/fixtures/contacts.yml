@@ -1,0 +1,5 @@
+default:
+  account: default
+  name: Default Contact
+  email: contact@example.com
+  phone: 555-555-5555

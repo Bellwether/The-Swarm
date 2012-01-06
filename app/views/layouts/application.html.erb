@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>The Swarm : Killa Bee Notification System</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div data-role="page">
+  <%= render "layouts/partials/header" %>
+  <div data-role="content">
+	<%= yield %>
+  </div>
+  <%= render "layouts/partials/footer" %>
+</div>
 
 </body>
 </html>
