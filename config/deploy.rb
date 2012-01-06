@@ -25,6 +25,8 @@ role :web, domain
 role :app, domain
 role :db,  domain, :primary => true
 
+load "deploy/assets"
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
