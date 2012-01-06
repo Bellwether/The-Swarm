@@ -32,3 +32,11 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+namespace :db do
+  desc "Populates the Production Database"
+  task :seed do
+    puts "\n\n=== Populating the Production Database! ===\n\n"
+    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+  end
+end
