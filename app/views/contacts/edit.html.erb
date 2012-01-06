@@ -11,7 +11,7 @@
 
   <h2>Subscriptions:</h2>
   <ul data-role="listview" data-theme="d" data-inset="true">
-	<% if @subscriptions %>
+	<% unless @subscriptions.blank? %>
       <%= render @subscriptions %>
     <% else %>
       <li data-role="list-divider">No subscriptions</li>

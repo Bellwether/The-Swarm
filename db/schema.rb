@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120102171952) do
     t.integer "users_count",     :default => 0,    :null => false
     t.integer "contact_limit",   :default => 50,   :null => false
     t.integer "user_limit",      :default => 3,    :null => false
+    t.integer "messages_limit",  :default => 30,   :null => false
     t.boolean "active",          :default => true, :null => false
   end
 
@@ -47,12 +48,15 @@ ActiveRecord::Schema.define(:version => 20120102171952) do
   add_index "contacts", ["account_id", "created_at"], :name => "index_contacts_on_account_id_and_created_at"
 
   create_table "messages", :force => true do |t|
-    t.integer  "user_id",     :null => false
-    t.integer  "campaign_id", :null => false
-    t.string   "subject",     :null => false
+    t.integer  "user_id",                   :null => false
+    t.integer  "campaign_id",               :null => false
+    t.string   "subject",     :limit => 99, :null => false
     t.text     "body"
+    t.string   "message_arn"
     t.datetime "created_at"
   end
+
+  add_index "messages", ["campaign_id"], :name => "index_messages_on_campaign_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "campaign_id",      :null => false

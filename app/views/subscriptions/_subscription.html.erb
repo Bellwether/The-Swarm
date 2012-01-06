@@ -1,0 +1,21 @@
+<% if !@contact.blank? %>
+<li>
+  <div class="ui-grid-b">
+    <div class="ui-block-a"><%= subscription.campaign.name %> (<%= subscription.confirmed? ? 'CONFIRMED' : 'PENDING' %>)</div>
+    <div class="ui-block-b"><%= subscription.protocol %> : <%= subscription.endpoint %></div>
+    <div class="ui-block-c">
+	  <%= form_for([@contact, subscription], :method => :delete) do |f| %>
+	    <%= f.submit 'Delete', 'data-inline' => true, 'data-icon' => 'delete' %>
+	  <% end %>    
+	</div>
+  </div>
+</li>
+<% elsif @campaign %>
+<li>
+  <div class="ui-grid-b">
+    <div class="ui-block-a"><%= subscription.campaign.name %></div>
+    <div class="ui-block-b"><%= subscription.confirmed? ? 'CONFIRMED' : 'PENDING' %></div>
+    <div class="ui-block-c"><%= subscription.protocol %> : <%= subscription.endpoint %></div>
+  </div>
+</li>
+<% end %>

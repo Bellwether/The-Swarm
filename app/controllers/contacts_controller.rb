@@ -10,6 +10,7 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find_by_id_and_account_id(params[:id], current_user.account_id)
+    @subscriptions = @contact.subscriptions.includes(:campaign)
   end
 
   def create

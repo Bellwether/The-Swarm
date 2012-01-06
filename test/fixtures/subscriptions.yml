@@ -1,0 +1,5 @@
+default:
+  campaign: default
+  contact: default
+  protocol: sms
+  endpoint: 5555555555

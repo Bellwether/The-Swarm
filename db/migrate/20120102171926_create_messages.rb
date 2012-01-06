@@ -9,7 +9,7 @@ class CreateMessages < ActiveRecord::Migration
       t.timestamp :created_at
     end
     
-    add_index :contacts, [:campaign_id]        
+    add_index :messages, [:campaign_id]
   end
 
   def down

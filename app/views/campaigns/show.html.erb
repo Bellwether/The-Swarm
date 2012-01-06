@@ -16,5 +16,8 @@
       <li data-role="list-divider">No subscriptions</li>
     <% end %>
   </ul>
-  <br />
+
+  <%= form_for(@campaign, :method => :delete) do |f| %>
+    <p><%= f.submit 'Delete Campaign and Subscriptions', 'data-inline' => true, 'data-icon' => 'delete' %></p>
+  <% end %>
 </div>

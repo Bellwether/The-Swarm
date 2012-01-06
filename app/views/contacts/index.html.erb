@@ -5,6 +5,10 @@
 <div class="ui-body ui-body-a">
   <h2>Contacts</h2>
   <ul data-role="listview" data-theme="d" data-inset="true">
-	<%= render @contacts ? @contacts : '' %>	
+	<% unless @contacts.blank? %>
+      <%= render @contacts %>
+    <% else %>
+      <li data-role="list-divider"><h4>No Contacts</h4></li>
+    <% end %>
   </ul>
 </div>

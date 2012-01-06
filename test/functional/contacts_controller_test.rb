@@ -25,6 +25,19 @@ class ContactsControllerTest < ActionController::TestCase
     assert_tag :tag => "input", :attributes => { :type => 'tel', :name => 'contact[phone]' }        
   end  
   
+  test "should get edit with subscriptions" do
+    get :edit, :id => @contact.id
+    assert_template :edit, 'should render edit'
+    assert_not_nil assigns[:contact]
+    assert_not_nil assigns[:subscriptions]    
+  end  
+  
+  test "should get edit without subscriptions" do  
+    @contact.subscriptions.destroy_all
+    get :edit, :id => @contact.id
+    assert_equal [], assigns[:subscriptions]
+  end
+  
   test "should create" do  
     assert_difference('Contact.count', 1) do
       post :create, :contact => {:name => 'New Contact', :phone => '555-555-5555', :email => 'new@example.com'}

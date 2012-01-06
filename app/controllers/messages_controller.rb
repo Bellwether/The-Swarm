@@ -11,6 +11,8 @@ class MessagesController < ApplicationController
     @message = @campaign.messages.new(params[:message])
     @message.user_id = current_user.id
     
+    @campaign.update_subscriptions
+    
     if @message.save
       flash[:notice] = "Message sent!"
       redirect_to campaign_path(@campaign)

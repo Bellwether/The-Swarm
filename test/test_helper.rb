@@ -25,8 +25,16 @@ end
 module AWS
   class SNS
     class Topic
+      def display_name= display_name
+        display_name
+      end
+            
       def publish msg, opts = {}
         return 'aws-1234567890-0987654321' # mock message id response
+      end
+      
+      def subscribe endpoint, opts = {}
+        Subscription.new 'aws-1234567890-0987654321' # mock subscription object
       end
     end
   end

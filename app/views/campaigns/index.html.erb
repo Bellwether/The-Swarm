@@ -6,6 +6,10 @@
   <h2>Campaigns</h2>
   <ul data-role="listview" data-theme="d" data-inset="true">
 
-	<%= render @campaigns ? @campaigns : '' %>
+	<% unless @campaigns.blank? %>
+      <%= render @campaigns %>
+    <% else %>
+      <li data-role="list-divider"><h4>No Campaigns</h4></li>
+    <% end %>
   </ul>
 </div>

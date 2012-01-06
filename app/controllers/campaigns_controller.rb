@@ -8,7 +8,9 @@ class CampaignsController < ApplicationController
   end
   
   def show
-    @campaign = Campaign.find(params[:id])
+    @account = current_user.account
+    @campaign = @account.campaigns.find(params[:id])
+    @subscriptions = @campaign.subscriptions
   end
   
   def create
@@ -21,5 +23,14 @@ class CampaignsController < ApplicationController
     else
       render :action => "new"
     end      
+  end
+  
+  def destroy
+    @account = current_user.account
+    @campaign = @account.campaigns.find(params[:id])    
+    @campaign.destroy
+    flash[:notice] = "Campaign deleted!"
+    
+    redirect_to campaigns_path
   end
 end

@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :subject, :campaign_id, :body
   validates :subject, :length => { :maximum => 99 }
   
-  before_create :publish_sns    
+  before_create :publish_sns
   
   def sms_body
     body ? body[0..140] : ''

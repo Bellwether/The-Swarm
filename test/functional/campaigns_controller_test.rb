@@ -23,9 +23,17 @@ class CampaignsControllerTest < ActionController::TestCase
     assert_tag :tag => "input", :attributes => { :type => 'text', :name => 'campaign[name]' }
   end  
   
+  test "should get show" do
+    get :show, :id => @campaign.id
+    assert_response :success, 'should respond with success'
+    assert_template :show, 'should render show'
+    assert_not_nil assigns[:account]
+    assert_not_nil assigns[:campaign]
+  end
+  
   test "should create" do  
     assert_difference('Campaign.count', 1) do
-      post :create, :campaign => {:name => 'New Campaign'}
+      post :create, :campaign => {:name => 'TestCampaign'}
       assert_not_nil assigns[:campaign]
     end
     assert_equal 'Campaign created!', flash[:notice]
@@ -39,4 +47,12 @@ class CampaignsControllerTest < ActionController::TestCase
     end
     assert_template :new, 'should render new'    
   end
+  
+  test "should destroy" do  
+    assert_difference('Campaign.count', -1) do
+      delete :destroy, :id => @campaign.id
+    end
+    assert_equal 'Campaign deleted!', flash[:notice]
+    assert_redirected_to campaigns_path
+  end  
 end

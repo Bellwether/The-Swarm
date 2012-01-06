@@ -1,9 +1,15 @@
 <div class="ui-body ui-body-a">
-  <h1>New Subscription</h1>
+  <h1>New Subscription <%= @contact.name ? "for #{@contact.name}" : '' %></h1>
 
-  <%= form_for(@subscription) do |f| %>
-
-    <p><%= f.submit 'Save' %></p>
+  <%= form_for [@contact, @subscription] do |f| %>
+    <%= f.label :protocol, 'Campaign' %>
+    <%= select(:subscription, :campaign_id, @campaigns.collect {|m| [ m.name, m.id ] }, {:include_blank => true}, 
+                        {'data-native-menu' => false, 'data-placeholder' => true}) %>
+	
+    <%= f.label :protocol, 'Protocol' %>
+    <%= collection_select(:subscription, :protocol, ['SMS'], :to_s, :to_s, {:include_blank => true}, 
+                          {'data-native-menu' => false, 'data-placeholder' => true}) %>
+    <p><%= f.submit 'Save', 'data-icon' => 'check' %></p>
   <% end %>
   <br />
 </div>
