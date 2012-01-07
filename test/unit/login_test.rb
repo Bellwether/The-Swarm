@@ -5,6 +5,7 @@ class SessionTest < ActiveModel::TestCase
   
   def setup
     @login = @model = Login.new
+    @user = users(:default)
   end  
   
   def test_should_validate_email
@@ -21,5 +22,25 @@ class SessionTest < ActiveModel::TestCase
     @login.email = 'test@example.com'
     @login.password = 'test'    
     assert_equal true, @login.valid?
+  end
+
+  def test_should_not_authenticate_without_credentials
+    assert_nil @login.find_authenticated
+  end
+
+  def test_should_not_authenticate_with_bad_email
+    @login = Login.new(:email => 'bad', :password => 'pass')
+    assert_nil @login.find_authenticated
+  end
+
+  def test_should_not_authenticate_with_bad_password
+    @login = Login.new(:email => @user.email, :password => 'bad')
+    assert_nil @login.find_authenticated
+  end
+
+  def test_should_authenticate
+    @login = Login.new(:email => @user.email, :password => 'pass')    
+    assert user = @login.find_authenticated
+    assert_equal user.id, @user.id
   end
 end

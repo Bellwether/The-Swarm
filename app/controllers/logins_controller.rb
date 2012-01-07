@@ -4,11 +4,12 @@ class LoginsController < ApplicationController
   end
   
   def create
-    if user = User.find_authenticated(params[:email], params[:password])
+    @login = Login.new(params[:login])
+    
+    if user = @login.find_authenticated
       session[:user_id] = user.id
       redirect_to root_path, :notice => "Logged in!"
     else
-      @login = Login.new
       @login.errors.add(:email, "Invalid email or password")
       render "new"
     end

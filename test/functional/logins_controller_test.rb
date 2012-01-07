@@ -16,7 +16,7 @@ class LoginsControllerTest < ActionController::TestCase
   end  
   
   test "should login" do  
-    post :create, :email => @user.email, :password => 'pass'
+    post :create, :login => {:email => @user.email, :password => 'pass'}
     assert_response :redirect, 'should respond with redirect'
     assert_equal @user.id, session[:user_id], 'should store user id in session'
     assert_equal 'Logged in!', flash[:notice]

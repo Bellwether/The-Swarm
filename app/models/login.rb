@@ -6,10 +6,16 @@ class Login
   validates_presence_of :email, :password
 
   def initialize(attributes = {})
+    attributes ||= {}
     attributes.each do |name, value|
       send("#{name}=", value)
     end
   end
+  
+  def find_authenticated()
+    user = User.find_by_email(email)
+    return user && user.authenticate(password) ? user : nil
+  end  
 
   def to_model
     self
