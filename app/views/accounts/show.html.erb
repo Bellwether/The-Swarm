@@ -1,11 +1,11 @@
 <div class="ui-body ui-body-a">
-  <h1>Bellwether</h1>
+  <h1><%= @account.name %></h1>
   <div class="ui-body ui-body-b">
     <h2>Your account status:</h2>
-    <h4>Users: 2 / 3</h4>
-    <h4>Campaigns: 3 / 5</h4>
-    <h4>Contacts: 10 / 100</h4>
-    <h4>Messages: 5 / 30</h4>
+    <h4>Users: <%= @account.users_count %> / <%= @account.user_limit %></h4>
+    <h4>Campaigns: <%= @account.campaigns_count %> / <%= @account.campaign_limit %></h4>
+    <h4>Contacts: <%= @account.contacts.count %> / <%= @account.contact_limit %></h4>
+    <h4>Messages: 0 / <%= @account.messages_limit %></h4>
   </div>
   <br />
 </div>
