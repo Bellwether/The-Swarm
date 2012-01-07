@@ -35,10 +35,23 @@ namespace :deploy do
   end
 end
 
-namespace :db do
+namespace :db do  
+  desc "Create Production Database"
+  task :create do
+    puts "\n\n=== Creating the Production Database! ===\n\n"
+    run "cd #{current_path}; rake db:create RAILS_ENV=production"
+    system "cap deploy:set_permissions"
+  end  
+  
   desc "Populates the Production Database"
   task :seed do
     puts "\n\n=== Populating the Production Database! ===\n\n"
     run "cd #{current_path}; rake db:seed RAILS_ENV=production"
   end
+  
+  desc "Resets the Production Database"
+  task :migrate_reset do
+    puts "\n\n=== Resetting the Production Database! ===\n\n"
+    run "cd #{current_path}; rake db:migrate:reset RAILS_ENV=production"
+  end  
 end

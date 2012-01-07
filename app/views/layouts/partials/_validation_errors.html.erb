@@ -1,0 +1,9 @@
+<% if model.errors.any? %>
+  <div id='errors' class='ui-screen-hidden'>
+	<div style='padding:15px;'>
+      <h3>Error : Could not Save</h3>
+      <p><%= model.errors.full_messages.join(', ') %></p>
+    </div>
+	<a rel='close' data-role='button' href='#' id='simpleclose'>Ok</a>
+  </div>
+<% end %>

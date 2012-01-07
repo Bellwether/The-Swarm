@@ -9,4 +9,5 @@
     <p><%= f.submit 'Save' %></p>
   <% end %>
   <br />
-</div>
+</div>	
+<%= render "layouts/partials/validation_errors", :model => @campaign %>
