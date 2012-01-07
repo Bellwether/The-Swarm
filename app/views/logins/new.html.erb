@@ -1,16 +1,17 @@
 <div class="ui-body ui-body-a">
   <h1>Enter the Swarm</h1>
 
-  <form action="/login" method="post">
-    <p>
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" value="" placeholder=""/>
-    </p>
-    <p>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" value="" placeholder=""/>
-    </p>
-    <p><input type="submit" value="Login" /></p>
-  </form>
+  <%= form_for @login, :url => login_url do |f| %>
+  <p>
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password, 'Password' %>
+    <%= f.password_field :password %>
+  </p>
+    <p><%= f.submit 'Login' %></p>
+  <% end %>
   <br />
 </div>
+<%= render "layouts/partials/validation_errors", :model => @login %>

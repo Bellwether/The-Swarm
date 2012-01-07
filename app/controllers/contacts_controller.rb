@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.find_by_account_id(current_user.account_id)    
+    @contacts = Contact.find_all_by_account_id(current_user.account_id)    
   end
 
   def new
