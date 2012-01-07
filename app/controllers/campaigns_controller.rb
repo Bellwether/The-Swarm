@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  before_filter :authenticate
+  
   def index
     @campaigns = Campaign.find_all_by_account_id(current_user.account_id)
   end

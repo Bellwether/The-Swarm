@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate
+
   def new
     @account = current_user.account
     @campaign = @account.campaigns.find_by_id(params[:campaign_id])

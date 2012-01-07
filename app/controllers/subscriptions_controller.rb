@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_filter :authenticate
+  
   def new
     @account = current_user.account
     @contact = @account.contacts.find_by_id(params[:contact_id]) 

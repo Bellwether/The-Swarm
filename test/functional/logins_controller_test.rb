@@ -11,7 +11,8 @@ class LoginsControllerTest < ActionController::TestCase
     get :new
     assert_response :success, 'should respond with success'
     assert_template :new, 'should render new'
-    assert_tag :tag => "form", :attributes => { :action => '/login', :method => 'post' }
+    assert_not_nil assigns(:login)
+    assert_tag :tag => "form", :attributes => { :action => login_url, :method => 'post' }
   end  
   
   test "should login" do  
@@ -26,7 +27,8 @@ class LoginsControllerTest < ActionController::TestCase
     post :create, :email => @user.email, :password => 'bad'
     assert_response :success, 'should respond with success'
     assert_template :new, 'should render new'
-    assert_equal 'Invalid email or password', flash[:alert]
+    assert_not_nil assigns(:login)
+    assert_not_nil assigns(:login).errors.full_messages
   end
   
   test "should logout" do
