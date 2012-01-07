@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :campaign  
+  belongs_to :campaign, :counter_cache => true
   belongs_to :user
   
   validates_presence_of :subject, :campaign_id, :body

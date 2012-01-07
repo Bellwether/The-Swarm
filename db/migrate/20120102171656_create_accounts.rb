@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :campaign_limit, :null => false, :default => 1
       t.integer :campaigns_count, :null => false, :default => 0
       t.integer :users_count, :null => false, :default => 0
+      t.integer :contacts_count, :null => false, :default => 0
       t.integer :contact_limit, :null => false, :default => 50
       t.integer :user_limit, :null => false, :default => 3
       t.integer :messages_limit, :null => false, :default => 30

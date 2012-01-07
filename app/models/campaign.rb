@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  belongs_to :account
+  belongs_to :account, :counter_cache => true
   has_many :messages, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy  
   
