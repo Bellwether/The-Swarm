@@ -1,5 +1,13 @@
 require 'test_helper'
 
+class AWSArgumentErrorSubscription < Subscription
+  def subscribe_sns
+    raise ArgumentError, 'could not determine protocol'
+  rescue ArgumentError => e
+    errors[:endpoint] << e.message
+  end
+end 
+
 class SubscriptionTest < ActiveModel::TestCase
   def setup
     @campaign = campaigns(:default)
@@ -105,5 +113,11 @@ class SubscriptionTest < ActiveModel::TestCase
     @subscription.save!
     
     assert_not_nil @subscription.subscription_arn
+  end
+  
+  def test_should_rescue_sns_argument_error
+    @subscription = AWSArgumentErrorSubscription.new
+    @subscription.subscribe_sns
+    assert_equal ['could not determine protocol'], @subscription.errors[:endpoint]
   end
 end

@@ -52,7 +52,12 @@ class Subscription < ActiveRecord::Base
   def subscribe_sns
     topic = AWS::SNS::Topic.new campaign.topic_arn
     subscription = topic.subscribe endpoint
+    
     self.subscription_arn = subscription.arn if subscription
+    
+  rescue ArgumentError => e
+    self.errors[:endpoint] << e.message
+    return false
   end
   
   def unsubscribe_sns  
