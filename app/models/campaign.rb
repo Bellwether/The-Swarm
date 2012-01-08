@@ -11,6 +11,10 @@ class Campaign < ActiveRecord::Base
   before_create :save_sns
   before_destroy :delete_sns
   
+  def name=(v)
+    write_attribute(:name, v ? v.upcase : v)
+  end  
+  
   def update_subscriptions
     missing_arn = subscriptions.where(:subscription_arn => nil)
     logger.info 'missing_arn = ' +missing_arn.inspect

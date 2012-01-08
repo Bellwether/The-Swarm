@@ -13,7 +13,7 @@
 <% elsif @campaign %>
 <li>
   <div class="ui-grid-b">
-    <div class="ui-block-a"><%= subscription.campaign.name %></div>
+    <div class="ui-block-a"><%= subscription.contact.name %></div>
     <div class="ui-block-b"><%= subscription.confirmed? ? 'CONFIRMED' : 'PENDING' %></div>
     <div class="ui-block-c"><%= subscription.protocol %> : <%= subscription.endpoint %></div>
   </div>

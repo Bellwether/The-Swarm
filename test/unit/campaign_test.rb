@@ -5,6 +5,12 @@ class CampaignTest < ActiveModel::TestCase
     @account = accounts(:default)
     @campaign = Campaign.new
   end
+
+  def test_should_upcase_name
+    name = 'lowercase name'
+    @campaign.name = name
+    assert_equal name.upcase, @campaign.name
+  end
   
   def test_should_validate_name
     assert_equal false, @campaign.valid?
