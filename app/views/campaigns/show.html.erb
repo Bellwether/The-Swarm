@@ -8,12 +8,12 @@
     <h4>Messages Sent: 0</h4>	
   </div>
 
-  <h2>Subscribers:</h2>
+  <h2>Contacts:</h2>
   <ul data-role="listview" data-theme="d" data-inset="true">
 	<% if @subscriptions %>
       <%= render @subscriptions %>
     <% else %>
-      <li data-role="list-divider">No subscriptions</li>
+      <li data-role="list-divider">No subscribed contacts</li>
     <% end %>
   </ul>
 

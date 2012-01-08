@@ -13,5 +13,5 @@ TheSwarm::Application.routes.draw do
   
   resource :login, :only => [:new,:create,:destroy]
 
-  root :to => 'accounts#show'
+  root :to => 'campaigns#index'
 end

@@ -15,7 +15,6 @@ class MessagesControllerTest < ActionController::TestCase
     assert_not_nil assigns[:campaign]
     assert_not_nil assigns[:message]    
     assert_tag :tag => "form", :attributes => { :action => "/campaigns/#{@campaign.id}/messages", :method => 'post' }
-    assert_tag :tag => "input", :attributes => { :type => 'text', :name => 'message[subject]' }
     assert_tag :tag => "textarea", :attributes => { :name => 'message[body]' }      
   end  
   

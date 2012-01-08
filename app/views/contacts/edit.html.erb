@@ -6,15 +6,14 @@
   <h1>Contact: <%= @contact.name %></h1>
   <div class="ui-body ui-body-b">
     <h4>Phone: <%= @contact.phone %></h4>
-    <h4>Email: <%= @contact.email %></h4>
   </div>
 
-  <h2>Subscriptions:</h2>
+  <h2>Campaigns:</h2>
   <ul data-role="listview" data-theme="d" data-inset="true">
 	<% unless @subscriptions.blank? %>
       <%= render @subscriptions %>
     <% else %>
-      <li data-role="list-divider">No subscriptions</li>
+      <li data-role="list-divider">No campaign subscriptions</li>
     <% end %>
   </ul>
   <br />

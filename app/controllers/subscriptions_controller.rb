@@ -6,6 +6,7 @@ class SubscriptionsController < ApplicationController
     @contact = @account.contacts.find_by_id(params[:contact_id]) 
     @campaigns = Campaign.find_all_by_account_id(current_user.account_id)
     @subscription = @contact.subscriptions.build
+    @subscription.protocol = 'sms'
   end
   
   def create

@@ -21,7 +21,6 @@ class ContactsControllerTest < ActionController::TestCase
     assert_not_nil assigns[:contact]    
     assert_tag :tag => "form", :attributes => { :action => '/contacts', :method => 'post' }
     assert_tag :tag => "input", :attributes => { :type => 'text', :name => 'contact[name]' }
-    assert_tag :tag => "input", :attributes => { :type => 'email', :name => 'contact[email]' }
     assert_tag :tag => "input", :attributes => { :type => 'tel', :name => 'contact[phone]' }        
   end  
   

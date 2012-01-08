@@ -16,8 +16,9 @@ class SubscriptionsControllerTest < ActionController::TestCase
     assert_not_nil assigns[:campaigns]
     assert_not_nil assigns[:contact]    
     assert_not_nil assigns[:subscription]
+    assert_equal 'sms', assigns[:subscription].protocol
     assert_tag :tag => "form", :attributes => { :action => "/contacts/#{@contact.id}/subscriptions", :method => 'post' }
-    assert_tag :tag => "select", :attributes => { :name => 'subscription[protocol]' }    
+    assert_tag :tag => "input", :attributes => { :type => 'hidden', :name => 'subscription[protocol]' }    
     assert_tag :tag => "select", :attributes => { :name => 'subscription[campaign_id]' }    
   end
   

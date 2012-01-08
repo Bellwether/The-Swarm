@@ -1,17 +1,13 @@
 <div class="ui-body ui-body-a">
-  <h1>New Message</h1>
+  <h1>Send SMS to <%= @campaign.name %></h1>
 
   <%= form_for [@campaign, @message] do |f| %>
-    <p>
-      <%= f.label :subject, 'Subject' %>
-      <%= f.text_field :subject %>
-    </p>
     <p>
       <%= f.label :body, 'Body' %>
       <%= f.text_area :body %>
     </p>
 
-    <p><%= f.submit 'Save' %></p>
+    <p><%= f.submit 'Send Message' %></p>
   <% end %>
   <br />
 </div>

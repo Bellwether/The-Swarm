@@ -6,9 +6,7 @@
     <%= select(:subscription, :campaign_id, @campaigns.collect {|m| [ m.name, m.id ] }, {:include_blank => true}, 
                         {'data-native-menu' => false, 'data-placeholder' => true}) %>
 	
-    <%= f.label :protocol, 'Protocol' %>
-    <%= collection_select(:subscription, :protocol, ['SMS'], :to_s, :to_s, {:include_blank => true}, 
-                          {'data-native-menu' => false, 'data-placeholder' => true}) %>
+	<%= f.hidden_field :protocol %>
     <p><%= f.submit 'Save', 'data-icon' => 'check' %></p>
   <% end %>
   <br />
