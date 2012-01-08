@@ -1,3 +1,4 @@
 <li>
-  <%= link_to 'Campaign 3', campaign_path(campaign) %><span class=' ui-li-count'>75</span>
+  <%= link_to campaign.name, campaign_path(campaign) %>
+  <span class=' ui-li-count'><%= campaign.messages_count %> sent messages</span>
 </li>

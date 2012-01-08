@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div data-role="page">
+<div data-role="page" data-url="<%= controller.request.url %>">
   <%= render "layouts/partials/header" %>
   <div data-role="content">
 	<%= yield %>
