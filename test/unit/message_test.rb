@@ -8,7 +8,7 @@ class MessageTest < ActiveModel::TestCase
   
   def test_should_validate_subject
     assert_equal false, @message.valid?
-    assert_equal ["can't be blank"], @message.errors[:subject]
+    assert_equal ["can't be blank"], @message.errors[:body]
   end
   
   def test_should_validate_campaign
@@ -34,5 +34,18 @@ class MessageTest < ActiveModel::TestCase
     @message.body = ''
     1000.times { |i| @message.body << '*' }
     assert_equal @message.body[0..140], @message.sms_body
+  end
+  
+  def test_set_subject
+    @message.send(:set_subject)
+    assert_equal 'MSG', @message.subject
+    @message.subject = 'test'
+    @message.send(:set_subject)
+    assert_equal 'test', @message.subject
+  end 
+  
+  def test_set_subject_before_validation
+    @message.save
+    assert_equal 'MSG', @message.subject
   end
 end

@@ -5,6 +5,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :subject, :campaign_id, :body
   validates :subject, :length => { :maximum => 99 }
   
+  before_validation :set_subject
   before_create :publish_sns
   
   def sms_body
@@ -14,5 +15,9 @@ class Message < ActiveRecord::Base
   def publish_sns
     topic = AWS::SNS::Topic.new campaign.topic_arn
     topic.publish sms_body
+  end
+  
+  def set_subject
+    self.subject ||= 'MSG'
   end
 end
